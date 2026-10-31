@@ -1,0 +1,15 @@
+/* Minimal layout for the search field. The full theme comes in Task 9. */
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-width: 24rem;
+  margin-bottom: 1rem;
+}
+
+.search-bar input {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #888;
+  border-radius: 6px;
+}

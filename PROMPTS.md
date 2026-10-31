@@ -148,3 +148,23 @@
 > 
 > Do not start Task 7. Give me a short summary of the changes when you are done, but do not commit Task 6 yet.
 > </pasted_content id="fbbd">
+
+**21:06 · claude**
+
+> <pasted_content id="fbbd">
+> Hi Claude. I tested the search functionality in the browser and it works flawlessly! The pure function approach and the 4 new tests are excellent.
+> 
+> Let's wrap up Task 6:
+> 1. Mark Task 6 as Done `[x]` in `tasks.md`.
+> 2. Run `git add .` and `git commit -m "feat: add client-side search filtering (Task 6)"`.
+> 
+> Once the commit is successful, please execute ONLY Task 7: Favorites.
+> Here is what I need for Task 7:
+> - Implement a mechanism to add/remove characters to Favorites, saving the data persistently in browser `localStorage`.
+> - Add a "Favorite" toggle button (e.g., "Add to Favorites" / "Remove") to each character on the `ListPage` (inside `CharacterList`) and also on the `DetailPage`.
+> - Create a new page `src/pages/FavoritesPage.tsx` that reads the favorites from `localStorage` and displays them nicely (you can reuse the `CharacterList` component).
+> - Update `Navbar.tsx` to include a navigation link to the Favorites page, and update `App.tsx` with the new route `/favorites`.
+> - Ensure everything is typed correctly. 
+> 
+> Do not start Task 8. Give me a short summary of the changes when you are done, but do not commit Task 7 yet.
+> </pasted_content id="fbbd">

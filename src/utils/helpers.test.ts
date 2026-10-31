@@ -1,5 +1,44 @@
 import { describe, expect, it } from 'vitest'
-import { getIdFromUrl, parseMeasurement } from './helpers'
+import type { Character } from '../types'
+import { filterCharacters, getIdFromUrl, parseMeasurement } from './helpers'
+
+function makeCharacter(id: string, name: string): Character {
+  return {
+    id,
+    name,
+    height: 'unknown',
+    mass: 'unknown',
+    birth_year: 'unknown',
+    eye_color: 'unknown',
+  }
+}
+
+const characters: Character[] = [
+  makeCharacter('1', 'Luke Skywalker'),
+  makeCharacter('4', 'Darth Vader'),
+  makeCharacter('11', 'Anakin Skywalker'),
+  makeCharacter('13', 'Chewbacca'),
+]
+
+describe('filterCharacters', () => {
+  it('ignores upper and lower case', () => {
+    const names = filterCharacters(characters, 'SKY').map((c) => c.name)
+    expect(names).toEqual(['Luke Skywalker', 'Anakin Skywalker'])
+  })
+
+  it('ignores spaces around the query', () => {
+    expect(filterCharacters(characters, '  vader  ')).toHaveLength(1)
+  })
+
+  it('returns the full list for an empty or blank query', () => {
+    expect(filterCharacters(characters, '')).toEqual(characters)
+    expect(filterCharacters(characters, '   ')).toEqual(characters)
+  })
+
+  it('returns an empty list when no name matches', () => {
+    expect(filterCharacters(characters, 'yoda')).toEqual([])
+  })
+})
 
 describe('getIdFromUrl', () => {
   it('returns the id at the end of a SWAPI url', () => {
