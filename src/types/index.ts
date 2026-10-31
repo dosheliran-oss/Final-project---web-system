@@ -7,6 +7,15 @@ export interface Character {
   mass: string
   birth_year: string
   eye_color: string
+  // Counted from the films url list, for the compare page.
+  film_count: number
+}
+
+// The shared result of fetching /people, passed from App to the pages.
+export interface CharactersState {
+  characters: Character[]
+  loading: boolean
+  error: string | null
 }
 
 // Passed from App to every page that shows the favorite button.

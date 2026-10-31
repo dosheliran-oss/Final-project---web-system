@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import type { Character } from '../types'
 import {
+  compareStat,
   filterCharacters,
   getIdFromUrl,
   parseMeasurement,
@@ -15,6 +16,7 @@ function makeCharacter(id: string, name: string): Character {
     mass: 'unknown',
     birth_year: 'unknown',
     eye_color: 'unknown',
+    film_count: 0,
   }
 }
 
@@ -24,6 +26,25 @@ const characters: Character[] = [
   makeCharacter('11', 'Anakin Skywalker'),
   makeCharacter('13', 'Chewbacca'),
 ]
+
+describe('compareStat', () => {
+  it('picks the second value and the difference (Luke vs Chewbacca)', () => {
+    expect(compareStat(172, 228)).toEqual({ winner: 'b', difference: 56 })
+  })
+
+  it('picks the first value when it is higher', () => {
+    expect(compareStat(136, 77)).toEqual({ winner: 'a', difference: 59 })
+  })
+
+  it('reports a tie for equal values', () => {
+    expect(compareStat(4, 4)).toEqual({ winner: 'tie', difference: 0 })
+  })
+
+  it('returns null when either value is missing', () => {
+    expect(compareStat(null, 172)).toBeNull()
+    expect(compareStat(172, null)).toBeNull()
+  })
+})
 
 describe('toggleFavorite', () => {
   const luke = characters[0]

@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import FavoriteButton from '../components/FavoriteButton'
 import StatusMessage from '../components/StatusMessage'
 import type { FavoritesProps, Film, Planet, SwapiCharacter } from '../types'
-import { toCharacter } from '../utils/helpers'
+import { displayValue, toCharacter } from '../utils/helpers'
 
 const PEOPLE_URL = 'https://swapi.info/api/people'
 
@@ -25,12 +25,6 @@ async function fetchJson<T>(url: string): Promise<T> {
     throw new Error(`Request failed with status ${response.status}`)
   }
   return response.json()
-}
-
-// SWAPI uses "unknown" and "n/a" for missing values.
-function displayValue(value: string, unit = ''): string {
-  if (value === 'unknown' || value === 'n/a' || value === '') return 'Unknown'
-  return unit ? `${value} ${unit}` : value
 }
 
 function DetailPage({ favorites, onToggleFavorite }: FavoritesProps) {

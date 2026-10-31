@@ -14,7 +14,27 @@ export function toCharacter(person: SwapiCharacter): Character {
     mass: person.mass,
     birth_year: person.birth_year,
     eye_color: person.eye_color,
+    film_count: person.films.length,
   }
+}
+
+// SWAPI uses "unknown" and "n/a" for missing values.
+export function displayValue(value: string, unit = ''): string {
+  if (value === 'unknown' || value === 'n/a' || value === '') return 'Unknown'
+  return unit ? `${value} ${unit}` : value
+}
+
+export interface StatComparison {
+  winner: 'a' | 'b' | 'tie'
+  difference: number
+}
+
+// Compares two numeric stats. Returns null when either value is missing,
+// so the compare table never declares a winner from unknown data.
+export function compareStat(a: number | null, b: number | null): StatComparison | null {
+  if (a === null || b === null) return null
+  if (a === b) return { winner: 'tie', difference: 0 }
+  return { winner: a > b ? 'a' : 'b', difference: Math.abs(a - b) }
 }
 
 // Adds the character if it is not a favorite yet, removes it otherwise.
