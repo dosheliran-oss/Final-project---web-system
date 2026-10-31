@@ -1,8 +1,29 @@
-import type { Character } from '../types'
+import type { Character, SwapiCharacter } from '../types'
 
 // "https://swapi.info/api/people/1" -> "1" (a trailing slash is allowed)
 export function getIdFromUrl(url: string): string {
   return url.split('/').filter(Boolean).pop() ?? ''
+}
+
+// Keeps only the fields the app stores, and adds the id from the url.
+export function toCharacter(person: SwapiCharacter): Character {
+  return {
+    id: getIdFromUrl(person.url),
+    name: person.name,
+    height: person.height,
+    mass: person.mass,
+    birth_year: person.birth_year,
+    eye_color: person.eye_color,
+  }
+}
+
+// Adds the character if it is not a favorite yet, removes it otherwise.
+// Matching is by id, so the list never holds the same character twice.
+export function toggleFavorite(favorites: Character[], character: Character): Character[] {
+  if (favorites.some((favorite) => favorite.id === character.id)) {
+    return favorites.filter((favorite) => favorite.id !== character.id)
+  }
+  return [...favorites, character]
 }
 
 // Case-insensitive name search. An empty or blank query keeps every character.

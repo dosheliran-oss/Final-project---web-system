@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react'
 import CharacterList from '../components/CharacterList'
 import SearchBar from '../components/SearchBar'
 import StatusMessage from '../components/StatusMessage'
-import type { Character, SwapiCharacter } from '../types'
-import { filterCharacters, getIdFromUrl } from '../utils/helpers'
+import type { Character, FavoritesProps, SwapiCharacter } from '../types'
+import { filterCharacters, toCharacter } from '../utils/helpers'
 
 const PEOPLE_URL = 'https://swapi.info/api/people'
 
-function ListPage() {
+function ListPage({ favorites, onToggleFavorite }: FavoritesProps) {
   const [characters, setCharacters] = useState<Character[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -26,16 +26,7 @@ function ListPage() {
         }
         const data: SwapiCharacter[] = await response.json()
         if (ignore) return
-        setCharacters(
-          data.map((person) => ({
-            id: getIdFromUrl(person.url),
-            name: person.name,
-            height: person.height,
-            mass: person.mass,
-            birth_year: person.birth_year,
-            eye_color: person.eye_color,
-          })),
-        )
+        setCharacters(data.map(toCharacter))
       } catch (err) {
         if (ignore) return
         setError(err instanceof Error ? err.message : 'Something went wrong')
@@ -62,7 +53,11 @@ function ListPage() {
         <>
           <SearchBar value={query} onChange={setQuery} />
           {visibleCharacters.length > 0 ? (
-            <CharacterList characters={visibleCharacters} />
+            <CharacterList
+              characters={visibleCharacters}
+              favorites={favorites}
+              onToggleFavorite={onToggleFavorite}
+            />
           ) : (
             <p>No characters found</p>
           )}

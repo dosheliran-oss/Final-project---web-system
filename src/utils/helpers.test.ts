@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import type { Character } from '../types'
-import { filterCharacters, getIdFromUrl, parseMeasurement } from './helpers'
+import {
+  filterCharacters,
+  getIdFromUrl,
+  parseMeasurement,
+  toggleFavorite,
+} from './helpers'
 
 function makeCharacter(id: string, name: string): Character {
   return {
@@ -19,6 +24,30 @@ const characters: Character[] = [
   makeCharacter('11', 'Anakin Skywalker'),
   makeCharacter('13', 'Chewbacca'),
 ]
+
+describe('toggleFavorite', () => {
+  const luke = characters[0]
+  const vader = characters[1]
+
+  it('adds a character that is not a favorite yet', () => {
+    expect(toggleFavorite([vader], luke)).toEqual([vader, luke])
+  })
+
+  it('removes a character that is already a favorite', () => {
+    expect(toggleFavorite([luke, vader], luke)).toEqual([vader])
+  })
+
+  it('matches by id, so it never creates duplicates', () => {
+    const lukeCopy = { ...luke }
+    expect(toggleFavorite([luke], lukeCopy)).toEqual([])
+  })
+
+  it('does not change the original list', () => {
+    const favorites = [luke]
+    toggleFavorite(favorites, vader)
+    expect(favorites).toEqual([luke])
+  })
+})
 
 describe('filterCharacters', () => {
   it('ignores upper and lower case', () => {

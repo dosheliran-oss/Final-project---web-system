@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom'
-import type { Character } from '../types'
+import type { Character, FavoritesProps } from '../types'
+import FavoriteButton from './FavoriteButton'
 
-interface CharacterListProps {
+interface CharacterListProps extends FavoritesProps {
   characters: Character[]
 }
 
-function CharacterList({ characters }: CharacterListProps) {
+function CharacterList({ characters, favorites, onToggleFavorite }: CharacterListProps) {
   return (
-    <ul>
+    <ul className="character-list">
       {characters.map((character) => (
         <li key={character.id}>
           <Link to={`/items/${character.id}`}>
@@ -15,7 +16,11 @@ function CharacterList({ characters }: CharacterListProps) {
           </Link>{' '}
           · height {character.height} cm ·
           mass {character.mass} kg · born {character.birth_year} · eyes{' '}
-          {character.eye_color}
+          {character.eye_color}{' '}
+          <FavoriteButton
+            isFavorite={favorites.some((favorite) => favorite.id === character.id)}
+            onToggle={() => onToggleFavorite(character)}
+          />
         </li>
       ))}
     </ul>

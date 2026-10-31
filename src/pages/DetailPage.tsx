@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import FavoriteButton from '../components/FavoriteButton'
 import StatusMessage from '../components/StatusMessage'
-import type { Film, Planet, SwapiCharacter } from '../types'
+import type { FavoritesProps, Film, Planet, SwapiCharacter } from '../types'
+import { toCharacter } from '../utils/helpers'
 
 const PEOPLE_URL = 'https://swapi.info/api/people'
 
@@ -31,7 +33,7 @@ function displayValue(value: string, unit = ''): string {
   return unit ? `${value} ${unit}` : value
 }
 
-function DetailPage() {
+function DetailPage({ favorites, onToggleFavorite }: FavoritesProps) {
   const { id = '' } = useParams()
   const [result, setResult] = useState<LoadResult | null>(null)
 
@@ -94,6 +96,10 @@ function DetailPage() {
       {details && (
         <>
           <h2>{details.character.name}</h2>
+          <FavoriteButton
+            isFavorite={favorites.some((favorite) => favorite.id === id)}
+            onToggle={() => onToggleFavorite(toCharacter(details.character))}
+          />
           <dl>
             <dt>Height</dt>
             <dd>{displayValue(details.character.height, 'cm')}</dd>

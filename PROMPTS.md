@@ -168,3 +168,23 @@
 > 
 > Do not start Task 8. Give me a short summary of the changes when you are done, but do not commit Task 7 yet.
 > </pasted_content id="fbbd">
+
+**21:09 · claude**
+
+> <pasted_content id="fbbd">
+> Hi Claude. I tested the Favorites functionality and the localStorage integration works like a charm! We are getting really close to the finish line.
+> 
+> Let's wrap up Task 7:
+> 1. Mark Task 7 as Done `[x]` in `tasks.md`.
+> 2. Run `git add .` and `git commit -m "feat: add favorites page and localStorage persistence (Task 7)"`.
+> 
+> Once the commit is successful, please execute ONLY Task 8: Compare Page (Galactic Matchup).
+> Here is what I need for Task 8:
+> - Create a new page `src/pages/ComparePage.tsx`.
+> - Add a link to it in `Navbar.tsx` and a route `/compare` in `App.tsx`.
+> - The page should allow the user to select two different characters (using two separate dropdowns/select inputs populated with the characters list).
+> - Once two characters are selected, display a clear side-by-side comparison of their stats (height, mass, birth year, etc.).
+> - Ensure the component is typed correctly and uses the existing fetched data.
+> 
+> Do not start Tasks 9-11 (Styling, README, Final check). Give me a short summary of the changes when you are done, but do not commit Task 8 yet.
+> </pasted_content id="fbbd">

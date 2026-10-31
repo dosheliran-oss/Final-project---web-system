@@ -9,6 +9,12 @@ export interface Character {
   eye_color: string
 }
 
+// Passed from App to every page that shows the favorite button.
+export interface FavoritesProps {
+  favorites: Character[]
+  onToggleFavorite: (character: Character) => void
+}
+
 // The raw shape of a character from /people. It has no id, only a url.
 // homeworld and films are urls, not names.
 export interface SwapiCharacter {
