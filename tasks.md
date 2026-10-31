@@ -18,7 +18,7 @@
   יצירת אפליקציית React + Vite + TypeScript מתוך התבנית.
   **Done when:** `npm run dev` מציג את עמוד הפתיחה של Vite.
 
-- [ ] **1. ניקוי התבנית**
+- [x] **1. ניקוי התבנית**
   מחיקת התוכן לדוגמה של Vite מ-`App.tsx`, `App.css` ו-`index.css`, ומחיקת התמונות שלא בשימוש.
   **Done when:** האפליקציה מציגה כותרת "Star Wars Explorer" בלבד, ו-`npm run build` עובר.
 
@@ -27,7 +27,7 @@
   **Done when:** לחיצה על כל קישור בתפריט מחליפה עמוד וכתובת, הקישור הפעיל מודגש, ו-`/abc` מציג את עמוד ה-404.
 
 - [ ] **3. טיפוסים ופונקציות עזר + Vitest**
-  יצירת `src/types.ts` עם הממשקים `Character`, `Planet` ו-`Film`. יצירת `src/utils/` עם הפונקציות `getIdFromUrl` ו-`parseMeasurement` (ממירה `"1,358"` ל-1358 ו-`"unknown"` ל-`null`). התקנת Vitest והוספת הסקריפט `test`.
+  יצירת `src/types/index.ts` עם הממשקים `Character`, `Planet` ו-`Film`. יצירת `src/utils/` עם הפונקציות `getIdFromUrl` ו-`parseMeasurement` (ממירה `"1,358"` ל-1358 ו-`"unknown"` ל-`null`). התקנת Vitest והוספת הסקריפט `test`.
   **Done when:** `npm test` מריץ לפחות 3 בדיקות שעוברות על שתי הפונקציות, כולל המקרים `unknown` ופסיק אלפים.
 
 ## שלב ב' · עמוד הרשימה (Master)
