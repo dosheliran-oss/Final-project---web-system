@@ -90,3 +90,40 @@
 > 
 > Do not start Task 4 (Testing) yet. Give me a brief update when these steps are committed successfully.
 > </pasted_content id="fbbd">
+
+**20:54 · claude**
+
+> <pasted_content id="fbbd">
+> Hi Claude. Excellent work! Regarding the text mismatch, please just update `tasks.md` to say "Loading characters..." instead of "טוען..." so our plan matches the English UI. 
+> 
+> Now, let's execute ONLY Task 4: Types, Helpers, and Vitest.
+> Here is what I need you to do:
+> 1. Install `vitest` and `@vitest/ui` as dev dependencies.
+> 2. Update `package.json` to include the test scripts: `"test": "vitest run"` and `"test:ui": "vitest --ui"`.
+> 3. Complete the remaining types (e.g., Planet, Film) in `src/types/index.ts` and any remaining helper functions (like `parseMeasurement`) in `src/utils/helpers.ts`.
+> 4. Create a test file `src/utils/helpers.test.ts`. 
+> 5. Write AT LEAST 5 distinct unit tests covering the logic of `getIdFromUrl` and any other helpers (test edge cases, valid URLs, invalid inputs, etc.). The project strictly requires at least 5 passing tests on actual logic.
+> 6. Run the tests to verify they all pass.
+> 
+> Do not start Phase C or Task 5. Do not mark Task
+> </pasted_content id="fbbd">
+
+**20:55 · claude**
+
+> <pasted_content id="fbbd">
+> Hi Claude. Amazing work on the tests! Everything looks perfectly stable.
+> Let's wrap up Task 4 and move forward:
+> 
+> 1. Since we successfully installed and configured `@vitest/ui` as part of this task, Task 13 is now redundant. Please completely remove Task 13 from `tasks.md`.
+> 2. Mark Task 4 as Done `[x]` in `tasks.md`.
+> 3. Run `git add .` and `git commit -m "test: add vitest, ui setup, and 9 passing tests for helpers (Task 4)"`.
+> 
+> Once the commit is successful, please execute ONLY Task 5: The Detail Page Fetch.
+> Here is what I need for Task 5:
+> - In `src/pages/DetailPage.tsx`, use the ID from the URL (via `useParams`) to fetch the specific character data from SWAPI (`https://swapi.info/api/people/{id}`).
+> - Implement the 3 UI states (Loading, Error, Data) using the `StatusMessage` component we created earlier.
+> - Display the character's details nicely on the page. 
+> - If `tasks.md` specifies fetching additional related data (like Planet/Films) for the Detail Page, implement it now using `Promise.all` and the types you created.
+> 
+> Do not start Task 6. Give me a short summary of the changes when you are done, but do not commit Task 5 yet.
+> </pasted_content id="fbbd">

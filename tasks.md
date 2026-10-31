@@ -30,11 +30,11 @@
 
 - [x] **3. משיכת הרשימה ושלושת המצבים**
   ב-`ListPage`: `fetch` ל-`/people` בתוך `useEffect`. יצירת רכיב `StatusMessage` להצגת מצב טעינה ומצב שגיאה. יצירת `src/utils/helpers.ts` עם הפונקציה `getIdFromUrl` לחילוץ המזהה מה-`url`.
-  **Done when:** בטעינה מופיע "טוען...", אחר כך מוצגת רשימת השמות, ובניתוק הרשת (DevTools ← Offline) מופיעה הודעת שגיאה. אין שגיאות בקונסול.
+  **Done when:** בטעינה מופיע "Loading characters...", אחר כך מוצגת רשימת השמות, ובניתוק הרשת (DevTools ← Offline) מופיעה הודעת שגיאה. אין שגיאות בקונסול.
 
-- [ ] **4. טיפוסים ופונקציות עזר + Vitest**
-  הוספת הממשקים `Planet` ו-`Film` ל-`src/types/index.ts`. הוספת הפונקציה `parseMeasurement` ל-`src/utils/helpers.ts` (ממירה `"1,358"` ל-1358 ו-`"unknown"` ל-`null`). התקנת Vitest והוספת הסקריפט `test`.
-  **Done when:** `npm test` מריץ לפחות 3 בדיקות שעוברות על `getIdFromUrl` ו-`parseMeasurement`, כולל המקרים `unknown` ופסיק אלפים.
+- [x] **4. טיפוסים ופונקציות עזר + Vitest**
+  הוספת הממשקים `Planet` ו-`Film` ל-`src/types/index.ts`. הוספת הפונקציה `parseMeasurement` ל-`src/utils/helpers.ts` (ממירה `"1,358"` ל-1358 ו-`"unknown"` ל-`null`). התקנת Vitest ו-`@vitest/ui`, והוספת הסקריפטים `test` ו-`test:ui`.
+  **Done when:** `npm run test:ui` פותח את ממשק הבדיקות בדפדפן, ו-`npm test` מריץ לפחות 5 בדיקות שעוברות על `getIdFromUrl` ו-`parseMeasurement`, כולל המקרים `unknown` ופסיק אלפים.
 
 - [ ] **5. כרטיס דמות**
   יצירת רכיב `CharacterCard` שמקבל דמות ב-props, ובניית הרשימה עם `map` ועם `key={id}`.
@@ -76,19 +76,15 @@
 
 ## שלב ו' · גימור
 
-- [ ] **13. Vitest UI**
-  התקנת `@vitest/ui` והוספת הסקריפט `test:ui`.
-  **Done when:** `npm run test:ui` פותח את ממשק הבדיקות בדפדפן, ויש בסך הכול לפחות 5 בדיקות שעוברות.
-
-- [ ] **14. עיצוב ורספונסיביות**
+- [ ] **13. עיצוב ורספונסיביות**
   CSS משלי בנושא Star Wars, ותצוגה תקינה במסך צר.
   **Done when:** האפליקציה נראית טוב ברוחב 375px (DevTools ← מצב מובייל), בלי גלילה אופקית.
 
-- [ ] **15. README.md**
+- [ ] **14. README.md**
   החלפת ה-README של Vite בתיאור הפרויקט.
   **Done when:** ה-README מסביר מה האפליקציה עושה, איך מריצים אותה (`npm install`, `npm run dev`), איך מריצים את הבדיקות (`npm test`, `npm run test:ui`), ובאיזה API משתמשים.
 
-- [ ] **16. בדיקה סופית לפני הגשה**
+- [ ] **15. בדיקה סופית לפני הגשה**
   מעבר על כל תנאי הקבלה ב-PRD.
   **Done when:** `npm run build`, `npm test` ו-`npm run lint` עוברים, אין `any` בקוד, אין שגיאות בקונסול, וה-repo ציבורי ב-GitHub.
 

@@ -18,3 +18,16 @@ export interface SwapiCharacter {
   eye_color: string
   url: string
 }
+
+// From /planets/:id. Only the fields the app shows are typed.
+export interface Planet {
+  name: string
+  url: string
+}
+
+// From /films/:id. episode_id is a number, unlike most SWAPI fields.
+export interface Film {
+  title: string
+  episode_id: number
+  url: string
+}
