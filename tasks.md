@@ -22,7 +22,7 @@
   מחיקת התוכן לדוגמה של Vite מ-`App.tsx`, `App.css` ו-`index.css`, ומחיקת התמונות שלא בשימוש.
   **Done when:** האפליקציה מציגה כותרת "Star Wars Explorer" בלבד, ו-`npm run build` עובר.
 
-- [ ] **2. ניתוב ותפריט ניווט**
+- [x] **2. ניתוב ותפריט ניווט**
   התקנת `react-router-dom`. יצירת ארבעה עמודים (`ListPage`, `DetailPage`, `FavoritesPage`, `ComparePage`) ועמוד `NotFoundPage`. הגדרת הכתובות לפי סעיף 4 ב-PRD, ויצירת רכיב `Navbar` עם `NavLink`.
   **Done when:** לחיצה על כל קישור בתפריט מחליפה עמוד וכתובת, הקישור הפעיל מודגש, ו-`/abc` מציג את עמוד ה-404.
 

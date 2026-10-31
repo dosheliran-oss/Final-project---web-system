@@ -58,3 +58,21 @@
 > Create src/pages/ListPage.tsx and move the usage of <CharacterList/> into it. This will be our home page.
 > Create src/pages/DetailPage.tsx. It should use useParams to extract the id from the URL, display a simple heading (e.g., "Character Details for ID: {id}"), and include a Link to go back to the home page.
 > Update `src/components/CharacterList.tsx
+
+**20:49 · claude**
+
+> <pasted_content id="fbbd">
+> Hi Claude. I tested the routing in the browser and everything works perfectly! 
+> Before we write any new code, please complete the administrative steps for Task 2:
+> 1. Update `tasks.md` and mark Task 2 as Done `[x]`.
+> 2. Run `git add .` and `git commit -m "feat: add React Router, page skeletons, and Navbar (Task 2)"`.
+> 
+> Once the commit is successful, please execute ONLY Task 3: "חיבור ל-API ומצבי טעינה".
+> Here is what I need for Task 3:
+> - In `src/pages/ListPage.tsx`, remove the mock data completely.
+> - Use `fetch` inside a `useEffect` hook to call the SWAPI endpoint: `https://swapi.info/api/people`.
+> - Implement and render three distinct UI states using `useState`: Loading (e.g., "Loading characters..."), Error (show the error message if the fetch fails), and Data (render the `CharacterList` when data arrives).
+> - Pass the fetched array of characters down to the `CharacterList` component.
+> Do not implement the fetch for the detail page yet, and do not start Task 4. 
+> Give me a short summary of the changes when you are done.
+> </pasted_content id="fbbd">
