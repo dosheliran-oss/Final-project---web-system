@@ -23,7 +23,7 @@
   **Done when:** האפליקציה מציגה כותרת "Star Wars Explorer" בלבד, ו-`npm run build` עובר.
 
 - [ ] **2. ניתוב ותפריט ניווט**
-  התקנת `react-router-dom`. יצירת ארבעה עמודים ריקים (`CharactersPage`, `CharacterDetailPage`, `FavoritesPage`, `ComparePage`) ועמוד `NotFoundPage`. הגדרת הכתובות לפי סעיף 4 ב-PRD, ויצירת רכיב `NavBar` עם `NavLink`.
+  התקנת `react-router-dom`. יצירת ארבעה עמודים (`ListPage`, `DetailPage`, `FavoritesPage`, `ComparePage`) ועמוד `NotFoundPage`. הגדרת הכתובות לפי סעיף 4 ב-PRD, ויצירת רכיב `Navbar` עם `NavLink`.
   **Done when:** לחיצה על כל קישור בתפריט מחליפה עמוד וכתובת, הקישור הפעיל מודגש, ו-`/abc` מציג את עמוד ה-404.
 
 - [ ] **3. טיפוסים ופונקציות עזר + Vitest**
@@ -33,7 +33,7 @@
 ## שלב ב' · עמוד הרשימה (Master)
 
 - [ ] **4. משיכת הרשימה ושלושת המצבים**
-  ב-`CharactersPage`: `fetch` ל-`/people` בתוך `useEffect`. יצירת רכיב `StatusMessage` להצגת מצב טעינה ומצב שגיאה.
+  ב-`ListPage`: `fetch` ל-`/people` בתוך `useEffect`. יצירת רכיב `StatusMessage` להצגת מצב טעינה ומצב שגיאה.
   **Done when:** בטעינה מופיע "טוען...", אחר כך מוצגת רשימת השמות, ובניתוק הרשת (DevTools ← Offline) מופיעה הודעת שגיאה. אין שגיאות בקונסול.
 
 - [ ] **5. כרטיס דמות**
@@ -47,7 +47,7 @@
 ## שלב ג' · עמוד הפרטים (Detail)
 
 - [ ] **7. פרטי דמות בסיסיים**
-  ב-`CharacterDetailPage`: קריאת `id` עם `useParams`, ו-`fetch` ל-`/people/:id`. הוספת כפתור "חזרה לרשימה".
+  ב-`DetailPage`: קריאת `id` עם `useParams`, ו-`fetch` ל-`/people/:id`. הוספת כפתור "חזרה לרשימה".
   **Done when:** `/items/1` מציג את כל הנתונים של Luke, ערכי `unknown` מוצגים כ"לא ידוע", `/items/9999` מציג "הדמות לא נמצאה", והכפתור מחזיר לרשימה.
 
 - [ ] **8. קריאות מקוננות: כוכב וסרטים**

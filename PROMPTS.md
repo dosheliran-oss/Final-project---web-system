@@ -48,3 +48,13 @@
 > 
 > Let me know when this is done. Do not start Task 2.
 > </pasted_content id="fbbd">
+
+**20:01 · claude**
+
+> Excellent. I have pushed the commit. Let's move on to Task 2 ONLY: "הגדרת ניתוב (React Router)".
+> Please perform the following steps:
+> Install react-router-dom.
+> Create src/components/Navbar.tsx with a simple navigation menu containing a NavLink to the Home page ("/").
+> Create src/pages/ListPage.tsx and move the usage of <CharacterList/> into it. This will be our home page.
+> Create src/pages/DetailPage.tsx. It should use useParams to extract the id from the URL, display a simple heading (e.g., "Character Details for ID: {id}"), and include a Link to go back to the home page.
+> Update `src/components/CharacterList.tsx
