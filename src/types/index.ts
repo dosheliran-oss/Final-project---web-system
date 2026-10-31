@@ -8,3 +8,13 @@ export interface Character {
   birth_year: string
   eye_color: string
 }
+
+// The raw shape of a character from /people. It has no id, only a url.
+export interface SwapiCharacter {
+  name: string
+  height: string
+  mass: string
+  birth_year: string
+  eye_color: string
+  url: string
+}

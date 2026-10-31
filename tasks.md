@@ -26,15 +26,15 @@
   התקנת `react-router-dom`. יצירת ארבעה עמודים (`ListPage`, `DetailPage`, `FavoritesPage`, `ComparePage`) ועמוד `NotFoundPage`. הגדרת הכתובות לפי סעיף 4 ב-PRD, ויצירת רכיב `Navbar` עם `NavLink`.
   **Done when:** לחיצה על כל קישור בתפריט מחליפה עמוד וכתובת, הקישור הפעיל מודגש, ו-`/abc` מציג את עמוד ה-404.
 
-- [ ] **3. טיפוסים ופונקציות עזר + Vitest**
-  יצירת `src/types/index.ts` עם הממשקים `Character`, `Planet` ו-`Film`. יצירת `src/utils/` עם הפונקציות `getIdFromUrl` ו-`parseMeasurement` (ממירה `"1,358"` ל-1358 ו-`"unknown"` ל-`null`). התקנת Vitest והוספת הסקריפט `test`.
-  **Done when:** `npm test` מריץ לפחות 3 בדיקות שעוברות על שתי הפונקציות, כולל המקרים `unknown` ופסיק אלפים.
-
 ## שלב ב' · עמוד הרשימה (Master)
 
-- [ ] **4. משיכת הרשימה ושלושת המצבים**
-  ב-`ListPage`: `fetch` ל-`/people` בתוך `useEffect`. יצירת רכיב `StatusMessage` להצגת מצב טעינה ומצב שגיאה.
+- [x] **3. משיכת הרשימה ושלושת המצבים**
+  ב-`ListPage`: `fetch` ל-`/people` בתוך `useEffect`. יצירת רכיב `StatusMessage` להצגת מצב טעינה ומצב שגיאה. יצירת `src/utils/helpers.ts` עם הפונקציה `getIdFromUrl` לחילוץ המזהה מה-`url`.
   **Done when:** בטעינה מופיע "טוען...", אחר כך מוצגת רשימת השמות, ובניתוק הרשת (DevTools ← Offline) מופיעה הודעת שגיאה. אין שגיאות בקונסול.
+
+- [ ] **4. טיפוסים ופונקציות עזר + Vitest**
+  הוספת הממשקים `Planet` ו-`Film` ל-`src/types/index.ts`. הוספת הפונקציה `parseMeasurement` ל-`src/utils/helpers.ts` (ממירה `"1,358"` ל-1358 ו-`"unknown"` ל-`null`). התקנת Vitest והוספת הסקריפט `test`.
+  **Done when:** `npm test` מריץ לפחות 3 בדיקות שעוברות על `getIdFromUrl` ו-`parseMeasurement`, כולל המקרים `unknown` ופסיק אלפים.
 
 - [ ] **5. כרטיס דמות**
   יצירת רכיב `CharacterCard` שמקבל דמות ב-props, ובניית הרשימה עם `map` ועם `key={id}`.
