@@ -1,4 +1,5 @@
 import type { Character } from '../types'
+import { getAlignment } from '../utils/alignment'
 import { compareStat, displayValue, parseMeasurement } from '../utils/helpers'
 
 interface CompareTableProps {
@@ -65,8 +66,12 @@ function CompareTable({ a, b }: CompareTableProps) {
         <thead>
           <tr>
             <th scope="col">Stat</th>
-            <th scope="col">{a.name}</th>
-            <th scope="col">{b.name}</th>
+            <th scope="col" className={`name-${getAlignment(a.name)}`}>
+              {a.name}
+            </th>
+            <th scope="col" className={`name-${getAlignment(b.name)}`}>
+              {b.name}
+            </th>
             <th scope="col">Result</th>
           </tr>
         </thead>

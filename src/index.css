@@ -18,6 +18,12 @@
   --red: #ff3b4e;
   --red-soft: rgba(255, 59, 78, 0.14);
   --red-glow: 0 0 6px rgba(255, 59, 78, 0.9), 0 0 22px rgba(255, 59, 78, 0.45);
+  /* Neutral colours for elements that should not take a side. */
+  --gold: #e5b13a;
+  --gold-soft: rgba(229, 177, 58, 0.14);
+  --gold-glow: 0 0 6px rgba(229, 177, 58, 0.85), 0 0 18px rgba(229, 177, 58, 0.4);
+  --neutral-label: #d3d3d3;
+  --neutral-value: #ffffff;
 
   --radius: 12px;
   --gutter: 16px;
@@ -43,14 +49,25 @@ body {
   font: 16px/1.5 var(--font);
   color: var(--text);
   background-color: var(--bg);
-  /* A faint star field made from a few repeated dots. */
-  background-image:
-    radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.5), transparent),
-    radial-gradient(1px 1px at 120px 80px, rgba(255, 255, 255, 0.35), transparent),
-    radial-gradient(1.5px 1.5px at 200px 160px, rgba(255, 255, 255, 0.45), transparent),
-    radial-gradient(1px 1px at 280px 40px, rgba(255, 255, 255, 0.3), transparent);
-  background-size: 320px 220px;
   overflow-x: hidden;
+}
+
+/* Full-screen wallpaper, drawn on a fixed layer behind the page.
+   A fixed pseudo-element acts like background-attachment: fixed, but also
+   works on iOS Safari, which ignores "fixed" on body backgrounds.
+   The dark gradient on top keeps text readable over the image. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(5, 6, 10, 0.55), rgba(5, 6, 10, 0.75)),
+    url('https://cdn.wallpapersafari.com/38/0/tNfnSd.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 h1,
@@ -255,11 +272,14 @@ a:hover {
   list-style: none;
 }
 
+/* Everything in the card is centred: flex centres the blocks, text-align the text. */
 .character-card {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.85rem;
   padding: 1.1rem;
+  text-align: center;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -269,28 +289,113 @@ a:hover {
     transform 0.2s ease;
 }
 
-/* Neon glow: the card lifts and lights up like an ignited saber. */
+/* Neon glow: the card lifts and lights up like an ignited saber.
+   Heroes glow Jedi blue, villains glow Sith red (see utils/alignment.ts). */
 .character-card:hover,
 .character-card:focus-within {
-  border-color: var(--blue);
-  box-shadow: var(--blue-glow);
   transform: translateY(-4px);
+}
+
+.card-hero:hover,
+.card-hero:focus-within {
+  border-color: var(--blue);
+  box-shadow: 0 0 15px rgba(46, 197, 255, 0.6);
+}
+
+.card-villain:hover,
+.card-villain:focus-within {
+  border-color: var(--red);
+  box-shadow: 0 0 15px rgba(255, 59, 78, 0.6);
+}
+
+/* Name colours by side. The compare-table selectors beat its blue header colour. */
+.name-hero,
+.compare-table thead th.name-hero {
+  color: var(--blue);
+}
+
+.name-villain,
+.compare-table thead th.name-villain {
+  color: var(--red);
+}
+
+/* ---------- Character images ---------- */
+
+.character-image-link {
+  display: block;
+  width: 100%;
+}
+
+/* Every image gets the same box; object-fit crops instead of stretching. */
+.character-image {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-raised);
+  transition:
+    border-color 0.2s ease,
+    filter 0.2s ease;
+}
+
+.character-card:hover .character-image,
+.character-card:focus-within .character-image {
+  filter: brightness(1.1);
+}
+
+.card-hero:hover .character-image,
+.card-hero:focus-within .character-image {
+  border-color: var(--blue);
+}
+
+.card-villain:hover .character-image,
+.card-villain:focus-within .character-image {
+  border-color: var(--red);
+}
+
+/* Shown when a character has no image or the image fails to load. */
+.character-image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 30% 30%, var(--blue-soft), transparent 60%),
+    radial-gradient(circle at 70% 70%, var(--red-soft), transparent 60%),
+    var(--surface-raised);
+}
+
+.character-image-placeholder span {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-shadow:
+    -2px 0 12px rgba(46, 197, 255, 0.6),
+    2px 0 12px rgba(255, 59, 78, 0.6);
 }
 
 .character-name {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--text);
 }
 
-.character-name:hover {
-  color: var(--blue);
+/* The name keeps its side colour on hover; the underline from a:hover marks it. */
+.character-name.name-hero:hover {
+  text-shadow: 0 0 8px rgba(46, 197, 255, 0.6);
+}
+
+.character-name.name-villain:hover {
+  text-shadow: 0 0 8px rgba(255, 59, 78, 0.6);
 }
 
 .card-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem 1rem;
+  width: 100%;
   margin: 0;
 }
 
@@ -308,33 +413,36 @@ a:hover {
 
 /* ---------- Favorite button ---------- */
 
+/* Neutral gold for every character, so it never takes a side. */
 .favorite-button {
   align-self: flex-start;
   padding: 0.45rem 0.9rem;
   font: inherit;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--red);
+  color: var(--gold);
   background: transparent;
-  border: 1px solid var(--red);
+  border: 1px solid var(--gold);
   border-radius: 999px;
   cursor: pointer;
   transition:
+    color 0.15s ease,
     background 0.15s ease,
     box-shadow 0.15s ease;
 }
 
 .favorite-button:hover {
-  background: var(--red-soft);
-  box-shadow: var(--red-glow);
+  background: var(--gold-soft);
+  box-shadow: var(--gold-glow);
 }
 
 .favorite-button[aria-pressed='true'] {
-  color: #fff;
-  background: var(--red);
+  color: var(--bg);
+  background: var(--gold);
 }
 
 .character-card .favorite-button {
+  align-self: center;
   margin-top: auto;
 }
 
@@ -375,15 +483,17 @@ a:hover {
   border-radius: var(--radius);
 }
 
+/* Stat text is always neutral: light grey labels, white values. */
 .detail-stats dt {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--neutral-label);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
 .detail-stats dd {
   margin: 0.15rem 0 0;
+  color: var(--neutral-value);
   font-size: 1.05rem;
   font-weight: 600;
   overflow-wrap: anywhere;
@@ -403,15 +513,16 @@ a:hover {
   align-items: baseline;
   gap: 0.25rem 0.75rem;
   padding: 0.75rem 1rem;
+  color: var(--neutral-value);
   background: var(--surface);
-  border-left: 3px solid var(--red);
+  border-left: 3px solid var(--neutral-label);
   border-radius: 0 8px 8px 0;
 }
 
 .film-episode {
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--red);
+  color: var(--neutral-label);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }

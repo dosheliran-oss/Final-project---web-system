@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import FavoriteButton from '../components/FavoriteButton'
 import StatusMessage from '../components/StatusMessage'
 import type { FavoritesProps, Film, Planet, SwapiCharacter } from '../types'
+import { getAlignment } from '../utils/alignment'
 import { displayValue, toCharacter } from '../utils/helpers'
 
 const PEOPLE_URL = 'https://swapi.info/api/people'
@@ -92,7 +93,9 @@ function DetailPage({ favorites, onToggleFavorite }: FavoritesProps) {
       {details && (
         <>
           <div className="detail-header">
-            <h2>{details.character.name}</h2>
+            <h2 className={`name-${getAlignment(details.character.name)}`}>
+              {details.character.name}
+            </h2>
             <FavoriteButton
               isFavorite={favorites.some((favorite) => favorite.id === id)}
               onToggle={() => onToggleFavorite(toCharacter(details.character))}
