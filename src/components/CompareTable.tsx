@@ -60,37 +60,39 @@ function CompareTable({ a, b }: CompareTableProps) {
   }
 
   return (
-    <table className="compare-table">
-      <thead>
-        <tr>
-          <th scope="col">Stat</th>
-          <th scope="col">{a.name}</th>
-          <th scope="col">{b.name}</th>
-          <th scope="col">Result</th>
-        </tr>
-      </thead>
-      <tbody>
-        {numericRows.map((row) => {
-          const winner = compareStat(row.numberA, row.numberB)?.winner
-          return (
+    <div className="table-scroll">
+      <table className="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Stat</th>
+            <th scope="col">{a.name}</th>
+            <th scope="col">{b.name}</th>
+            <th scope="col">Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          {numericRows.map((row) => {
+            const winner = compareStat(row.numberA, row.numberB)?.winner
+            return (
+              <tr key={row.label}>
+                <th scope="row">{row.label}</th>
+                <td className={winner === 'a' ? 'winner' : undefined}>{row.valueA}</td>
+                <td className={winner === 'b' ? 'winner' : undefined}>{row.valueB}</td>
+                <td className="result">{renderResult(row)}</td>
+              </tr>
+            )
+          })}
+          {textRows.map((row) => (
             <tr key={row.label}>
               <th scope="row">{row.label}</th>
-              <td>{winner === 'a' ? <strong>{row.valueA}</strong> : row.valueA}</td>
-              <td>{winner === 'b' ? <strong>{row.valueB}</strong> : row.valueB}</td>
-              <td>{renderResult(row)}</td>
+              <td>{row.valueA}</td>
+              <td>{row.valueB}</td>
+              <td>—</td>
             </tr>
-          )
-        })}
-        {textRows.map((row) => (
-          <tr key={row.label}>
-            <th scope="row">{row.label}</th>
-            <td>{row.valueA}</td>
-            <td>{row.valueB}</td>
-            <td>—</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+          ))}
+        </tbody>
+      </table>
+    </div>
   )
 }
 

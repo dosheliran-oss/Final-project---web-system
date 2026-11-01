@@ -34,7 +34,9 @@ function ComparePage({ characters, loading, error }: CharactersState) {
               onChange={setIdB}
             />
           </div>
-          {idA !== '' && idA === idB && <p>Please choose two different characters.</p>}
+          {idA !== '' && idA === idB && (
+            <p className="empty-state">Please choose two different characters.</p>
+          )}
           {characterA && characterB && idA !== idB && (
             <CompareTable a={characterA} b={characterB} />
           )}

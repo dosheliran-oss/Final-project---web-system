@@ -208,3 +208,25 @@
 > 
 > Do not start Task 10 (README). Give me a short summary of the CSS changes when you are done, but do not commit Task 9 yet.
 > </pasted_content id="fbbd">
+
+## 2026-11-01
+
+**19:21 · claude**
+
+> <pasted_content id="fbbd">
+> Hi Claude. I tested the app in the browser, including the mobile view at 375px. The Star Wars theme looks amazing, and the responsive design works flawlessly without any horizontal scrolling issues on the main page! 
+> Also, yes, please change the 404 page text to "Page not found" for consistency.
+> 
+> Let's wrap up Task 9 and finish the project:
+> 1. Fix the 404 page text.
+> 2. Mark Task 9 as Done `[x]` in `tasks.md`.
+> 3. Run `git add .` and `git commit -m "style: add dark Star Wars theme, responsive design, and fix 404 text (Task 9)"`.
+> 
+> Once that commit is successful, please execute Task 10 (README) and Task 11 (Final Check):
+> - Create the `README.md` file. Project requirements strictly state it must include: what the app does, how to run the app (`npm run dev`), how to run the tests (`npm run test` and `npm run test:ui`), and explicitly mention we used the SWAPI API.
+> - Run `npm run build` and `npm run lint` one last time to ensure zero errors.
+> - Mark Tasks 10 and 11 as Done `[x]` in `tasks.md`.
+> - Run the final commit: `git add .` and `git commit -m "docs: add README and perform final project checks (Tasks 10-11)"`.
+> 
+> Give me a brief final summary when the entire process is complete.
+> </pasted_content id="fbbd">

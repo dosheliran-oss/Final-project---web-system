@@ -83,40 +83,44 @@ function DetailPage({ favorites, onToggleFavorite }: FavoritesProps) {
   const details = current?.details ?? null
 
   return (
-    <section>
-      <Link to="/">Back to list</Link>
+    <section className="detail">
+      <Link to="/" className="back-link">
+        ← Back to list
+      </Link>
       {loading && <StatusMessage kind="loading" message="Loading character..." />}
       {error && <StatusMessage kind="error" message={error} />}
       {details && (
         <>
-          <h2>{details.character.name}</h2>
-          <FavoriteButton
-            isFavorite={favorites.some((favorite) => favorite.id === id)}
-            onToggle={() => onToggleFavorite(toCharacter(details.character))}
-          />
-          <dl>
-            <dt>Height</dt>
-            <dd>{displayValue(details.character.height, 'cm')}</dd>
-            <dt>Mass</dt>
-            <dd>{displayValue(details.character.mass, 'kg')}</dd>
-            <dt>Birth year</dt>
-            <dd>{displayValue(details.character.birth_year)}</dd>
-            <dt>Gender</dt>
-            <dd>{displayValue(details.character.gender)}</dd>
-            <dt>Eye color</dt>
-            <dd>{displayValue(details.character.eye_color)}</dd>
-            <dt>Hair color</dt>
-            <dd>{displayValue(details.character.hair_color)}</dd>
-            <dt>Skin color</dt>
-            <dd>{displayValue(details.character.skin_color)}</dd>
-            <dt>Homeworld</dt>
-            <dd>{details.planet.name}</dd>
+          <div className="detail-header">
+            <h2>{details.character.name}</h2>
+            <FavoriteButton
+              isFavorite={favorites.some((favorite) => favorite.id === id)}
+              onToggle={() => onToggleFavorite(toCharacter(details.character))}
+            />
+          </div>
+          <dl className="detail-stats">
+            {[
+              ['Height', displayValue(details.character.height, 'cm')],
+              ['Mass', displayValue(details.character.mass, 'kg')],
+              ['Birth year', displayValue(details.character.birth_year)],
+              ['Gender', displayValue(details.character.gender)],
+              ['Eye color', displayValue(details.character.eye_color)],
+              ['Hair color', displayValue(details.character.hair_color)],
+              ['Skin color', displayValue(details.character.skin_color)],
+              ['Homeworld', details.planet.name],
+            ].map(([label, value]) => (
+              <div key={label}>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
           </dl>
           <h3>Films</h3>
-          <ul>
+          <ul className="film-list">
             {details.films.map((film) => (
               <li key={film.url}>
-                Episode {film.episode_id}: {film.title}
+                <span className="film-episode">Episode {film.episode_id}</span>
+                {film.title}
               </li>
             ))}
           </ul>

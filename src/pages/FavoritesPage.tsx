@@ -13,7 +13,7 @@ function FavoritesPage({ favorites, onToggleFavorite }: FavoritesProps) {
           onToggleFavorite={onToggleFavorite}
         />
       ) : (
-        <p>
+        <p className="empty-state">
           You have no favorites yet. <Link to="/">Go to the list</Link> and mark some
           characters with ☆.
         </p>

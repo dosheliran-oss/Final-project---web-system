@@ -28,7 +28,7 @@ function ListPage({ characters, loading, error, favorites, onToggleFavorite }: L
               onToggleFavorite={onToggleFavorite}
             />
           ) : (
-            <p>No characters found</p>
+            <p className="empty-state">No characters found</p>
           )}
         </>
       )}

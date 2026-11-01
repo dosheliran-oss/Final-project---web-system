@@ -29,17 +29,21 @@ function App() {
   const favoritesProps = { favorites, onToggleFavorite: handleToggleFavorite }
 
   return (
-    <main>
-      <h1>Star Wars Explorer</h1>
-      <Navbar />
-      <Routes>
+    <>
+      <header className="site-header">
+        <h1 className="site-title">Star Wars Explorer</h1>
+        <Navbar />
+      </header>
+      <main className="page">
+        <Routes>
         <Route path="/" element={<ListPage {...charactersState} {...favoritesProps} />} />
         <Route path="/items/:id" element={<DetailPage {...favoritesProps} />} />
         <Route path="/favorites" element={<FavoritesPage {...favoritesProps} />} />
         <Route path="/compare" element={<ComparePage {...charactersState} />} />
         <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </main>
+        </Routes>
+      </main>
+    </>
   )
 }
 
