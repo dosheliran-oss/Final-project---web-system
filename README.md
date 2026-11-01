@@ -12,7 +12,7 @@ A Master-Detail web app for browsing the characters of the Star Wars saga. It is
 | Head to Head | `/compare` | Pick two characters and compare their height, mass and number of films side by side. The higher value in each row is highlighted, along with the difference. |
 | 404 | any other URL | Shows "Page not found" and a link back home. |
 
-Every page that loads data shows one of three states: loading, error or data. Missing values (`"unknown"`) are shown as "Unknown". The layout is responsive down to a 375px phone screen.
+Every page that loads data shows one of three states: loading, error or data. Missing values (`"unknown"`) are shown as "Unknown". The dark theme uses lightsaber colours: Jedi blue for navigation and highlights, and Sith red for favorites. Cards glow when you hover over them. The layout is responsive down to a 375px phone screen.
 
 ## Data source: SWAPI
 
@@ -79,7 +79,7 @@ src/
 ├── types/        # Character, SwapiCharacter, Planet, Film and the shared prop types
 ├── utils/        # pure helper functions and their tests, plus localStorage access
 ├── App.tsx       # routes, the shared character list and favorites state
-└── index.css     # the dark Star Wars theme and responsive layout
+└── index.css     # dark theme with Jedi-blue and Sith-red neon accents, responsive layout
 ```
 
 The product spec is in [`PRD.md`](PRD.md), and the step-by-step build plan is in [`tasks.md`](tasks.md).
