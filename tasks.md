@@ -66,11 +66,11 @@
   CSS משלי בנושא Star Wars, ותצוגה תקינה במסך צר.
   **Done when:** האפליקציה נראית טוב ברוחב 375px (DevTools ← מצב מובייל), בלי גלילה אופקית.
 
-- [ ] **10. README.md**
+- [x] **10. README.md**
   החלפת ה-README של Vite בתיאור הפרויקט.
   **Done when:** ה-README מסביר מה האפליקציה עושה, איך מריצים אותה (`npm install`, `npm run dev`), איך מריצים את הבדיקות (`npm test`, `npm run test:ui`), ובאיזה API משתמשים.
 
-- [ ] **11. בדיקה סופית לפני הגשה**
+- [x] **11. בדיקה סופית לפני הגשה**
   מעבר על כל תנאי הקבלה ב-PRD.
   **Done when:** `npm run build`, `npm test` ו-`npm run lint` עוברים, אין `any` בקוד, אין שגיאות בקונסול, וה-repo ציבורי ב-GitHub.
 
